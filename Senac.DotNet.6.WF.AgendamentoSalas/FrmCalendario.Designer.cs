@@ -50,7 +50,7 @@
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10.8183079F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 89.181694F));
-            tableLayoutPanel1.Size = new Size(1470, 721);
+            tableLayoutPanel1.Size = new Size(1498, 750);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -98,16 +98,16 @@
             // panel1
             // 
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(3, 81);
+            panel1.Location = new Point(3, 84);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1464, 637);
+            panel1.Size = new Size(1492, 663);
             panel1.TabIndex = 1;
             // 
             // FrmCalendario
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1470, 721);
+            ClientSize = new Size(1498, 750);
             Controls.Add(tableLayoutPanel1);
             Name = "FrmCalendario";
             Text = "Calendário";
