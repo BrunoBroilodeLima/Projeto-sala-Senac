@@ -6,7 +6,7 @@ namespace Senac.DotNet._6.WF.AgendamentoSalas
     {
         private TableLayoutPanel? calendarPanel;
         private DateTime mesCorrente;
-        private List<Agendamento> compromissos;
+        private List<Agendamento> agendamentos;
 
         public FrmCalendario()
         {
@@ -15,7 +15,7 @@ namespace Senac.DotNet._6.WF.AgendamentoSalas
             // Configuração inicial
             mesCorrente = DateTime.Now;
             labelMesAno.Text = mesCorrente.Month.ToString() + " / " + mesCorrente.Year.ToString();
-            compromissos = new List<Agendamento>
+            agendamentos = new List<Agendamento>
             {
                 new Agendamento(DateTime.Now.AddDays(5), "Compromisso 1", "Detalhes do Compromisso 1"),
                 new Agendamento(DateTime.Now.AddDays(10), "Compromisso 2", "Detalhes do Compromisso 2"),
@@ -24,7 +24,6 @@ namespace Senac.DotNet._6.WF.AgendamentoSalas
                 new Agendamento(DateTime.Now.AddDays(15), "Compromisso 5", "Detalhes do Compromisso 5"),
                 new Agendamento(DateTime.Now.AddDays(15), "Compromisso 6", "Detalhes do Compromisso 6"),
                 new Agendamento(DateTime.Now.AddDays(15), "Compromisso 7", "Detalhes do Compromisso 7"),
-
                 new Agendamento(DateTime.Now.AddDays(15), "Compromisso 8", "Detalhes do Compromisso 8"),
             };
 
@@ -49,63 +48,72 @@ namespace Senac.DotNet._6.WF.AgendamentoSalas
 
 
             // Cria sub-painéis para cada dia do mês
-            DateTime startDate = new DateTime(mesCorrente.Year, mesCorrente.Month, 1);
+            // obtem da data inicial criando DateTime a partir do dia 1
+            DateTime dataInicial = new DateTime(mesCorrente.Year, mesCorrente.Month, 1);
+            // obtem is dias no mes corrente
             int diasDoMes = DateTime.DaysInMonth(mesCorrente.Year, mesCorrente.Month);
-            int currentRow = 0, currentCol = (int)startDate.DayOfWeek;
+            int linhaAtual = 0, colunaAtual = (int)dataInicial.DayOfWeek;
 
+            // percorre os dias do mes
             for (int dia = 1; dia <= diasDoMes; dia++)
             {
                 // Cria sub-painel para o dia
                 Panel painelDia = new Panel
                 {
-                    Dock = DockStyle.Fill,
+                    Dock = DockStyle.Fill, // estica pra tamanho total do painel
                     BorderStyle = BorderStyle.FixedSingle,
-                    AutoScroll = true
+                    AutoScroll = true // cria barra de rolagem
                 };
 
                 // Adiciona um TextBox ao sub-painel para exibir o dia do mês
                 TextBox dayTextBox = new TextBox
                 {
                     Text = dia.ToString(),
-                    Dock = DockStyle.Top,
+                    Dock = DockStyle.Top, // alinha no topo do painel
                     TextAlign = HorizontalAlignment.Center,
-                    ReadOnly = true,
-                    BorderStyle = BorderStyle.None,
-                    BackColor = Color.White
+                    ReadOnly = true,                 // somente leitura
+                    BorderStyle = BorderStyle.None,  // sem borda
+                    BackColor = Color.White          // cor de fundo
                 };
 
-                painelDia.Controls.Add(dayTextBox);
+                painelDia.Controls.Add(dayTextBox);  // adicionar o numero do dia no painel do dia
 
-                // Adiciona compromissos ao sub-painel
-                var compromissosDoDia = compromissos.Where(c => c.Data.Day == dia &&
+                // Adiciona agendamento ao sub-painel
+                // filtra pelo dia, mes e ano na lista de agendamentos
+                var agendamentoDoDia = agendamentos.Where(c => c.Data.Day == dia &&
                                                  c.Data.Month == mesCorrente.Month &&
                                                  c.Data.Year == mesCorrente.Year).ToList();
-                foreach (var compromisso in compromissosDoDia)
+                foreach (var agendamento in agendamentoDoDia)
                 {
-                    Label compromissoLabel = new Label
+                    Label agendamentoLabel = new Label
                     {
-                        Text = compromisso.Titulo,
-                        Dock = DockStyle.Bottom,
-                        TextAlign = ContentAlignment.MiddleCenter,
+                        Text = agendamento.Titulo,
+                        Dock = DockStyle.Bottom,   // alinha na base do painel
+                        TextAlign = ContentAlignment.MiddleCenter, // alinha texto no meio
                         AutoSize = false,
-                        Height = 20,
-                        ForeColor = Color.Blue
+                        Height = 20,            // altura 20
+                        ForeColor = Color.Blue  // cor do texto azul
                     };
 
-                    compromissoLabel.Click += (sender, e) => MostrarDetalhesAgendamento(compromisso);
-
-                    painelDia.Controls.Add(compromissoLabel);
+                    // adicionar evento de clique no label
+                    agendamentoLabel.Click += (sender, e) => MostrarDetalhesAgendamento(agendamento);
+                    // adiciona o label no painel do dia
+                    painelDia.Controls.Add(agendamentoLabel);
                 }
 
                 // Adiciona o sub-painel ao painel do calendário
-                calendarPanel.Controls.Add(painelDia, currentCol, currentRow);
+                calendarPanel.Controls.Add(painelDia, colunaAtual, linhaAtual);
 
                 // Atualiza as posições da linha e coluna
-                currentCol++;
-                if (currentCol == 7)
+                colunaAtual++;
+
+                // se chegou na ultima coluna(ultimo dia da semanada)
+                if (colunaAtual == 7)
                 {
-                    currentCol = 0;
-                    currentRow++;
+                    // zera a coluna 
+                    colunaAtual = 0;
+                    // incrementa a linha
+                    linhaAtual++;
                 }
             }
             panel1.Controls.Add(calendarPanel);
