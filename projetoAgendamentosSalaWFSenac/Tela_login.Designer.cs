@@ -87,7 +87,7 @@
             // 
             // Btn_Cancela
             // 
-            Btn_Cancela.Location = new Point(337, 350);
+            Btn_Cancela.Location = new Point(323, 350);
             Btn_Cancela.Name = "Btn_Cancela";
             Btn_Cancela.Size = new Size(75, 23);
             Btn_Cancela.TabIndex = 6;
