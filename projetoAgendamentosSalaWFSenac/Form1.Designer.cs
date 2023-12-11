@@ -205,7 +205,7 @@
             cmbTurno.Items.AddRange(new object[] { "MANHÃ", "TARDE", "NOITE" });
             cmbTurno.Location = new Point(19, 70);
             cmbTurno.Name = "cmbTurno";
-            cmbTurno.Size = new Size(193, 23);
+            cmbTurno.Size = new Size(200, 23);
             cmbTurno.TabIndex = 1;
             cmbTurno.SelectedIndexChanged += cmbTurno_SelectedIndexChanged;
             // 
