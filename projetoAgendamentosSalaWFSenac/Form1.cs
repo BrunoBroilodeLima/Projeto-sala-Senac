@@ -57,6 +57,7 @@ namespace projetoAgendamentosSalaWFSenac
                     Dock = DockStyle.Fill, // estica pra tamanho total do painel
                     BorderStyle = BorderStyle.FixedSingle,
                     AutoScroll = true // cria barra de rolagem
+                    
                 };
 
                 // Adiciona um TextBox ao sub-painel para exibir o dia do mês
@@ -99,8 +100,14 @@ namespace projetoAgendamentosSalaWFSenac
                 // Adiciona o sub-painel ao painel do calendário
                 calendarPanel.Controls.Add(painelDia, colunaAtual, linhaAtual);
 
+                if(colunaAtual == 0)
+                {
+                    painelDia.BackColor = Color.Red;
+                }
+
                 // Atualiza as posições da linha e coluna
                 colunaAtual++;
+
 
                 // se chegou na ultima coluna(ultimo dia da semanada)
                 if (colunaAtual == 7)
