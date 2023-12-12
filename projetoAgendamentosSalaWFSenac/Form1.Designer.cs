@@ -52,6 +52,8 @@
             btnMesAtual = new Button();
             panel1 = new Panel();
             pictureBox2 = new PictureBox();
+            cmbSelecaoSala = new ComboBox();
+            label7 = new Label();
             gbxAgendamento.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
@@ -277,12 +279,32 @@
             pictureBox2.TabIndex = 3;
             pictureBox2.TabStop = false;
             // 
+            // cmbSelecaoSala
+            // 
+            cmbSelecaoSala.FormattingEnabled = true;
+            cmbSelecaoSala.Items.AddRange(new object[] { "SALA 101", "SALA 102", "SALA 103", "SALA 201", "SALA 202", "SALA 203" });
+            cmbSelecaoSala.Location = new Point(27, 104);
+            cmbSelecaoSala.Name = "cmbSelecaoSala";
+            cmbSelecaoSala.Size = new Size(121, 23);
+            cmbSelecaoSala.TabIndex = 4;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(26, 69);
+            label7.Name = "label7";
+            label7.Size = new Size(108, 15);
+            label7.TabIndex = 5;
+            label7.Text = "SELECIONE A SALA";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1604, 824);
+            Controls.Add(label7);
+            Controls.Add(cmbSelecaoSala);
             Controls.Add(pictureBox2);
             Controls.Add(panel1);
             Controls.Add(tableLayoutPanel1);
@@ -297,6 +319,7 @@
             flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -327,5 +350,7 @@
         private Button btnMesAtual;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private ComboBox cmbSelecaoSala;
+        private Label label7;
     }
 }
