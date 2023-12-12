@@ -34,8 +34,9 @@ namespace projetoAgendamentosSalaWFSenac
                 Dock = DockStyle.Fill,
                 CellBorderStyle = TableLayoutPanelCellBorderStyle.Single,
                 RowCount = 6,
-                ColumnCount = 7,
+                ColumnCount = 7,                 
                 AutoScroll = true
+                
             };
 
 
@@ -45,6 +46,7 @@ namespace projetoAgendamentosSalaWFSenac
             // obtem is dias no mes corrente
             int diasDoMes = DateTime.DaysInMonth(mesCorrente.Year, mesCorrente.Month);
             int linhaAtual = 0, colunaAtual = (int)dataInicial.DayOfWeek;
+            
 
             // percorre os dias do mes
             for (int dia = 1; dia <= diasDoMes; dia++)
@@ -66,6 +68,7 @@ namespace projetoAgendamentosSalaWFSenac
                     ReadOnly = true,                 // somente leitura
                     BorderStyle = BorderStyle.None,  // sem borda
                     BackColor = Color.White          // cor de fundo
+                    
                 };
 
                 painelDia.Controls.Add(dayTextBox);  // adicionar o numero do dia no painel do dia
@@ -107,6 +110,7 @@ namespace projetoAgendamentosSalaWFSenac
                     // incrementa a linha
                     linhaAtual++;
                 }
+               
             }
             panel1.Controls.Add(calendarPanel);
         }
@@ -151,6 +155,25 @@ namespace projetoAgendamentosSalaWFSenac
 
         private void cmbTurno_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnLimparDados_Click(object sender, EventArgs e)
+        {
+            limparCampos();
+        }
+
+        private void limparCampos()
+        {
+            cmbTurno.SelectedIndex = -1;
+            cmbResponsavel.SelectedIndex = -1;
+            dateTimeInicio.Text = DateTime.Now.ToString();
+            dateTimeFinal.Text = DateTime.Now.ToString();
+            cmbFinalidade.SelectedIndex = -1;
+            cmbConteudo.SelectedIndex = -1;
+            cmbTurno.Focus();
+            MessageBox.Show("Xalita Consegiu limpar campos");
+
 
         }
     }

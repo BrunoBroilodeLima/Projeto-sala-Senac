@@ -132,6 +132,7 @@
             btnLimparDados.TabIndex = 11;
             btnLimparDados.Text = "LIMPAR DADOS";
             btnLimparDados.UseVisualStyleBackColor = true;
+            btnLimparDados.Click += btnLimparDados_Click;
             // 
             // lblStatus
             // 
