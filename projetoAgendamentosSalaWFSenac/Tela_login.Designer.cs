@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tela_login));
             Btn_login = new Button();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
@@ -38,7 +39,7 @@
             // 
             // Btn_login
             // 
-            Btn_login.Location = new Point(418, 350);
+            Btn_login.Location = new Point(404, 374);
             Btn_login.Name = "Btn_login";
             Btn_login.Size = new Size(75, 23);
             Btn_login.TabIndex = 0;
@@ -48,7 +49,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(311, 238);
+            textBox1.Location = new Point(297, 262);
             textBox1.Name = "textBox1";
             textBox1.PlaceholderText = "Digite seu usuário";
             textBox1.Size = new Size(206, 23);
@@ -56,7 +57,7 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(311, 298);
+            textBox2.Location = new Point(297, 322);
             textBox2.Name = "textBox2";
             textBox2.PasswordChar = '*';
             textBox2.PlaceholderText = "Digite sua senha";
@@ -68,7 +69,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.ForeColor = SystemColors.Menu;
-            label1.Location = new Point(309, 280);
+            label1.Location = new Point(295, 304);
             label1.Name = "label1";
             label1.Size = new Size(39, 15);
             label1.TabIndex = 3;
@@ -79,7 +80,7 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.ForeColor = SystemColors.MenuBar;
-            label2.Location = new Point(311, 220);
+            label2.Location = new Point(297, 244);
             label2.Name = "label2";
             label2.Size = new Size(47, 15);
             label2.TabIndex = 4;
@@ -87,7 +88,7 @@
             // 
             // Btn_Cancela
             // 
-            Btn_Cancela.Location = new Point(323, 350);
+            Btn_Cancela.Location = new Point(309, 374);
             Btn_Cancela.Name = "Btn_Cancela";
             Btn_Cancela.Size = new Size(75, 23);
             Btn_Cancela.TabIndex = 6;
@@ -101,6 +102,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             BackColor = Color.FromArgb(0, 0, 64);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(795, 495);
             Controls.Add(Btn_Cancela);
