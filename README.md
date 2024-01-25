@@ -1,2 +1,2 @@
 # Projeto-sala-Senac
-Projeto do Bruno e Xalita
+Projeto do Bruno, Xalita e Yuri
