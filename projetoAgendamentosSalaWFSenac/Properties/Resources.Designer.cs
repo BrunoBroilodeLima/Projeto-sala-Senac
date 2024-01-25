@@ -73,6 +73,26 @@ namespace projetoAgendamentosSalaWFSenac.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LogoHorizontal_Senac_Negativo {
+            get {
+                object obj = ResourceManager.GetObject("LogoHorizontal-Senac-Negativo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LogoVertical_Senac_Negativo {
+            get {
+                object obj = ResourceManager.GetObject("LogoVertical-Senac-Negativo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap senac_santacruz {
             get {
                 object obj = ResourceManager.GetObject("senac-santacruz", resourceCulture);
