@@ -56,7 +56,7 @@ namespace AgendaSalaSenac
             ckSeg.Checked = false;
             ckTer.Checked = false;
             ckQua.Checked = false;
-            ckQui.Checked = false; 
+            ckQui.Checked = false;
             ckSex.Checked = false;
             ckSab.Checked = false;
 
@@ -120,6 +120,10 @@ namespace AgendaSalaSenac
                     string valorDaCelula = cell.Value.ToString();
                 }
                 txtId.Text = linhaSelecionada.Cells[0].Value.ToString();
+                if (txtId.Text == "")
+                {
+                    return;
+                }
                 txtSala.Text = linhaSelecionada.Cells[1].Value.ToString();
                 txtTurno.Text = linhaSelecionada.Cells[2].Value.ToString();
                 dateTimePickerInicio.Value = Convert.ToDateTime(linhaSelecionada.Cells[3].Value.ToString());
@@ -127,6 +131,13 @@ namespace AgendaSalaSenac
                 txtResponsavel.Text = linhaSelecionada.Cells[5].Value.ToString();
                 txtFinalidade.Text = linhaSelecionada.Cells[6].Value.ToString();
                 txtConteudo.Text = linhaSelecionada.Cells[7].Value.ToString();
+                ckSeg.Checked = (bool)linhaSelecionada.Cells[9].Value;
+                ckTer.Checked = (bool)linhaSelecionada.Cells[10].Value;
+                ckQua.Checked = (bool)linhaSelecionada.Cells[11].Value;
+                ckQui.Checked = (bool)linhaSelecionada.Cells[12].Value;
+                ckSex.Checked = (bool)linhaSelecionada.Cells[13].Value;
+                ckSab.Checked = (bool)linhaSelecionada.Cells[14].Value;
+
                 btnEditar.Enabled = true;
                 btnEncerrar.Enabled = true;
 
@@ -323,6 +334,11 @@ namespace AgendaSalaSenac
             deshabilitarCampos();
             LimparDados();
             ehNovo = false;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

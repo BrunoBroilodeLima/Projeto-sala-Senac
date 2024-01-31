@@ -551,6 +551,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Agenda Salas";
             WindowState = FormWindowState.Maximized;
+            FormClosing += Form1_FormClosing;
             Load += Form1_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
