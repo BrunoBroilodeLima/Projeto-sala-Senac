@@ -39,10 +39,7 @@ namespace AgendaSalaSenac
             }
         }
 
-        private void btnInserir_Click(object sender, EventArgs e)
-        {
-
-        }
+       
         private void LimparDados()
         {
             txtId.Clear();
@@ -338,7 +335,17 @@ namespace AgendaSalaSenac
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            DialogResult result = MessageBox.Show("Deseja realmente fechar o programa?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                Application.Exit();
+            }
+            
         }
     }
 }
