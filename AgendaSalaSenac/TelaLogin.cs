@@ -8,28 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace projetoAgendamentosSalaWFSenac
+namespace AgendaSalaSenac
 {
     public partial class TelaLogin : Form
     {
         public TelaLogin()
         {
             InitializeComponent();
-        }
-
-        private void TelaLogin_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtUsuario_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtSenha_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -43,7 +28,8 @@ namespace projetoAgendamentosSalaWFSenac
                 Form1 FrmMain = new Form1();
                 FrmMain.Show();
                 this.Hide();
-            } else
+            }
+            else
             {
                 MessageBox.Show("Usuário/Senha Incorretos!");
             }

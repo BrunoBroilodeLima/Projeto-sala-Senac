@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace projetoAgendamentosSalaWFSenac.Properties {
+namespace AgendaSalaSenac.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace projetoAgendamentosSalaWFSenac.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("projetoAgendamentosSalaWFSenac.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AgendaSalaSenac.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,46 +57,6 @@ namespace projetoAgendamentosSalaWFSenac.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Banner___Senac___1248__x_250 {
-            get {
-                object obj = ResourceManager.GetObject("Banner - Senac - 1248  x 250", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap LogoHorizontal_Senac_Negativo {
-            get {
-                object obj = ResourceManager.GetObject("LogoHorizontal-Senac-Negativo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap LogoVertical_Senac_Negativo {
-            get {
-                object obj = ResourceManager.GetObject("LogoVertical-Senac-Negativo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap senac_santacruz {
-            get {
-                object obj = ResourceManager.GetObject("senac-santacruz", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

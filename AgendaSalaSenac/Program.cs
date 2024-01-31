@@ -1,4 +1,4 @@
-namespace projetoAgendamentosSalaWFSenac
+namespace AgendaSalaSenac
 {
     internal static class Program
     {
