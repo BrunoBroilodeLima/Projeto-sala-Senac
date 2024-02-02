@@ -5,8 +5,9 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AgendaSalaSenac.Models;
 
-namespace AgendaSalaSenac
+namespace AgendaSalaSenac.DAL
 {
     public class DALAgenda
     {
@@ -54,10 +55,10 @@ namespace AgendaSalaSenac
             {
                 using (var cmd = DbConnection().CreateCommand())
                 {
-                    
-                    
-                    
-                    
+
+
+
+
                     //Sab BOOLEAN NOT NULL CHECK (Sab IN (0, 1))
                     cmd.CommandText = @$"CREATE TABLE IF NOT EXISTS Reservas         (Id INTEGER PRIMARY KEY AUTOINCREMENT,                    Sala VARCHAR(10), Turno VARCHAR(30), DataInicioAgendamento DATETIME, DataFinalAgendamento DATETIME, Responsavel VARCHAR(80), Finalidade VARCHAR(80), Conteudo VARCHAR(80) , Encerrado BOOLEAN NOT NULL CHECK (Encerrado IN (0, 1)),Seg BOOLEAN NOT NULL CHECK (Seg IN (0, 1)),Ter BOOLEAN NOT NULL CHECK (Ter IN (0, 1)),Qua BOOLEAN NOT NULL CHECK (Qua IN (0, 1)),Qui BOOLEAN NOT NULL CHECK (Qui IN (0, 1)),Sex BOOLEAN NOT NULL CHECK (Sex IN (0, 1)),Sab BOOLEAN NOT NULL CHECK (Sab IN (0, 1)) ); 
                                          CREATE TABLE IF NOT EXISTS ReservasHistorico(Id INTEGER PRIMARY KEY AUTOINCREMENT, IdReserva INTEGER, Sala VARCHAR(10), Turno VARCHAR(30), DataInicioAgendamento DATETIME, DataFinalAgendamento DATETIME, Responsavel VARCHAR(80), Finalidade VARCHAR(80), Conteudo VARCHAR(80) , Encerrado BOOLEAN NOT NULL CHECK (Encerrado IN (0, 1)),Seg BOOLEAN NOT NULL CHECK (Seg IN (0, 1)),Ter BOOLEAN NOT NULL CHECK (Ter IN (0, 1)),Qua BOOLEAN NOT NULL CHECK (Qua IN (0, 1)),Qui BOOLEAN NOT NULL CHECK (Qui IN (0, 1)),Sex BOOLEAN NOT NULL CHECK (Sex IN (0, 1)),Sab BOOLEAN NOT NULL CHECK (Sab IN (0, 1)) );
@@ -169,13 +170,13 @@ namespace AgendaSalaSenac
                     cmd.CommandText = "SELECT * FROM Reservas where Id=" + id;
                     da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
                     da.Fill(dt);
-                    foreach( DataRow dataRow in dt.Rows)
+                    foreach (DataRow dataRow in dt.Rows)
                     {
                         var reserva = new Reserva();
-                        reserva.Id = Convert.ToInt32( dataRow["id"]);
+                        reserva.Id = Convert.ToInt32(dataRow["id"]);
                         reserva.Sala = dataRow["sala"].ToString();
                         reserva.Turno = dataRow["turno"].ToString();
-                        reserva.DataInicioAgendamento = Convert.ToDateTime (dataRow["dataInicioAgendamento"]);
+                        reserva.DataInicioAgendamento = Convert.ToDateTime(dataRow["dataInicioAgendamento"]);
                         reserva.DataFinalAgendamento = Convert.ToDateTime(dataRow["dataFinalAgendamento"]);
                         reserva.Responsavel = dataRow["responsavel"].ToString();
                         reserva.Finalidade = dataRow["finalidade"].ToString();
@@ -201,9 +202,9 @@ namespace AgendaSalaSenac
                 // usamos o ussing pra liberar a memoria
                 using (var cmd = DbConnection().CreateCommand())
                 {
-                   
+
                     cmd.CommandText = "INSERT INTO Reservas( sala, turno, dataInicioAgendamento, dataFinalAgendamento, responsavel, finalidade, conteudo , Encerrado, Seg, Ter, Qua, Qui, Sex, Sab) values ( @sala, @turno, @dataInicioAgendamento, @dataFinalAgendamento, @responsavel, @finalidade, @conteudo, 0, @ckSeg, @ckTer, @ckQua, @ckQui, @ckSex, @ckSab)";
-                    
+
                     cmd.Parameters.AddWithValue("@sala", reserva.Sala);
                     cmd.Parameters.AddWithValue("@turno", reserva.Turno);
                     cmd.Parameters.AddWithValue("@dataInicioAgendamento", reserva.DataInicioAgendamento);
@@ -277,7 +278,7 @@ namespace AgendaSalaSenac
 
                     var reserva = GetReserva(id);
                     cmd.CommandText = "INSERT INTO ReservasHistorico(IdReserva, sala, turno, dataInicioAgendamento, dataFinalAgendamento, responsavel, finalidade, conteudo , Encerrado, Seg, Ter, Qua, Qui, Sex, Sab) values (@id, @sala, @turno, @dataInicioAgendamento, @dataFinalAgendamento, @responsavel, @finalidade, @conteudo, 0, @ckSeg, @ckTer, @ckQua, @ckQui, @ckSex, @ckSab)";
-                                      
+
                     cmd.Parameters.AddWithValue("@id", id);
                     cmd.Parameters.AddWithValue("@sala", reserva.Sala);
                     cmd.Parameters.AddWithValue("@turno", reserva.Turno);

@@ -1,5 +1,7 @@
 using System.Data;
 using System.Windows.Forms;
+using AgendaSalaSenac.DAL;
+using AgendaSalaSenac.Models;
 
 namespace AgendaSalaSenac
 {
