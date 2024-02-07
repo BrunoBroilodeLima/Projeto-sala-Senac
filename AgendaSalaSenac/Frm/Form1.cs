@@ -46,7 +46,7 @@ namespace AgendaSalaSenac
         {
             txtId.Clear();
             txtSala.Clear();
-            txtTurno.Clear();
+            //cmbTurno.Clear();
             //dateTimePickerInicio = new DateTimePicker();
             //dateTimePickerFim = new DateTimePicker();
             txtResponsavel.Clear();
@@ -124,7 +124,7 @@ namespace AgendaSalaSenac
                     return;
                 }
                 txtSala.Text = linhaSelecionada.Cells[1].Value.ToString();
-                txtTurno.Text = linhaSelecionada.Cells[2].Value.ToString();
+                cmbTurno.Text = linhaSelecionada.Cells[2].Value.ToString();
                 dateTimePickerInicio.Value = Convert.ToDateTime(linhaSelecionada.Cells[3].Value.ToString());
                 dateTimePickerFim.Value = Convert.ToDateTime(linhaSelecionada.Cells[4].Value.ToString());
                 txtResponsavel.Text = linhaSelecionada.Cells[5].Value.ToString();
@@ -179,7 +179,7 @@ namespace AgendaSalaSenac
             {
                 Reserva reserva = new Reserva();
                 reserva.Sala = txtSala.Text;
-                reserva.Turno = txtTurno.Text;
+                reserva.Turno = cmbTurno.Text;
                 reserva.DataInicioAgendamento = dateTimePickerInicio.Value;
                 reserva.DataFinalAgendamento = dateTimePickerFim.Value;
                 reserva.Responsavel = txtResponsavel.Text;
@@ -211,7 +211,7 @@ namespace AgendaSalaSenac
                 int id = Convert.ToInt32(txtId.Text);
                 var reserva = DALAgenda.GetReserva(id);
                 reserva.Sala = txtSala.Text;
-                reserva.Turno = txtTurno.Text;
+                reserva.Turno = cmbTurno.Text;
                 reserva.DataInicioAgendamento = dateTimePickerInicio.Value;
                 reserva.DataFinalAgendamento = dateTimePickerFim.Value;
                 reserva.Responsavel = txtResponsavel.Text;
@@ -250,7 +250,7 @@ namespace AgendaSalaSenac
         private void habilitarCampos()
         {
             txtSala.Enabled = true;
-            txtTurno.Enabled = true;
+            cmbTurno.Enabled = true;
             dateTimePickerInicio.Enabled = true;
             dateTimePickerFim.Enabled = true;
             ckSeg.Enabled = true;
@@ -270,7 +270,7 @@ namespace AgendaSalaSenac
         private void deshabilitarCampos()
         {
             txtSala.Enabled = !true;
-            txtTurno.Enabled = !true;
+            cmbTurno.Enabled = !true;
             dateTimePickerInicio.Enabled = false;
             dateTimePickerFim.Enabled = !true;
             ckSeg.Enabled = !true;
@@ -293,7 +293,7 @@ namespace AgendaSalaSenac
         {
             Reserva reserva = new Reserva();
             reserva.Sala = txtSala.Text;
-            reserva.Turno = txtTurno.Text;
+            reserva.Turno = cmbTurno.Text;
             reserva.DataInicioAgendamento = dateTimePickerInicio.Value;
             reserva.DataFinalAgendamento = dateTimePickerFim.Value;
             reserva.Responsavel = txtResponsavel.Text;

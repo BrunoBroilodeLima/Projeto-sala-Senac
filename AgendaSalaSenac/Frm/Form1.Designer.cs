@@ -34,6 +34,7 @@
             label10 = new Label();
             panel3 = new Panel();
             groupBox1 = new GroupBox();
+            cmbTurno = new ComboBox();
             btnCancelar = new Button();
             label12 = new Label();
             ckSab = new CheckBox();
@@ -46,7 +47,6 @@
             btnEditar = new Button();
             btnNovo = new Button();
             btnSalvar = new Button();
-            txtTurno = new TextBox();
             txtId = new TextBox();
             label8 = new Label();
             btnEncerrar = new Button();
@@ -125,6 +125,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(cmbTurno);
             groupBox1.Controls.Add(btnCancelar);
             groupBox1.Controls.Add(label12);
             groupBox1.Controls.Add(ckSab);
@@ -137,7 +138,6 @@
             groupBox1.Controls.Add(btnEditar);
             groupBox1.Controls.Add(btnNovo);
             groupBox1.Controls.Add(btnSalvar);
-            groupBox1.Controls.Add(txtTurno);
             groupBox1.Controls.Add(txtId);
             groupBox1.Controls.Add(label8);
             groupBox1.Controls.Add(btnEncerrar);
@@ -161,6 +161,15 @@
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Agendamento";
+            // 
+            // cmbTurno
+            // 
+            cmbTurno.FormattingEnabled = true;
+            cmbTurno.Items.AddRange(new object[] { "MANHÃ", "TARDE", "NOITE" });
+            cmbTurno.Location = new Point(8, 189);
+            cmbTurno.Name = "cmbTurno";
+            cmbTurno.Size = new Size(325, 23);
+            cmbTurno.TabIndex = 31;
             // 
             // btnCancelar
             // 
@@ -289,15 +298,6 @@
             btnSalvar.Text = "SALVAR";
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
-            // 
-            // txtTurno
-            // 
-            txtTurno.CharacterCasing = CharacterCasing.Upper;
-            txtTurno.Enabled = false;
-            txtTurno.Location = new Point(8, 186);
-            txtTurno.Name = "txtTurno";
-            txtTurno.Size = new Size(325, 23);
-            txtTurno.TabIndex = 3;
             // 
             // txtId
             // 
@@ -593,7 +593,6 @@
         private TextBox txtSala;
         private Label label1;
         private DataGridView dgvDados;
-        private TextBox txtTurno;
         private Label lblDados;
         private Label label10;
         private Label label11;
@@ -613,5 +612,6 @@
         private CheckBox ckQua;
         private CheckBox ckTer;
         private Button btnCancelar;
+        private ComboBox cmbTurno;
     }
 }

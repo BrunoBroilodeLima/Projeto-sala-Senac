@@ -60,9 +60,12 @@ namespace AgendaSalaSenac.DAL
 
 
                     //Sab BOOLEAN NOT NULL CHECK (Sab IN (0, 1))
-                    cmd.CommandText = @$"CREATE TABLE IF NOT EXISTS Reservas         (Id INTEGER PRIMARY KEY AUTOINCREMENT,                    Sala VARCHAR(10), Turno VARCHAR(30), DataInicioAgendamento DATETIME, DataFinalAgendamento DATETIME, Responsavel VARCHAR(80), Finalidade VARCHAR(80), Conteudo VARCHAR(80) , Encerrado BOOLEAN NOT NULL CHECK (Encerrado IN (0, 1)),Seg BOOLEAN NOT NULL CHECK (Seg IN (0, 1)),Ter BOOLEAN NOT NULL CHECK (Ter IN (0, 1)),Qua BOOLEAN NOT NULL CHECK (Qua IN (0, 1)),Qui BOOLEAN NOT NULL CHECK (Qui IN (0, 1)),Sex BOOLEAN NOT NULL CHECK (Sex IN (0, 1)),Sab BOOLEAN NOT NULL CHECK (Sab IN (0, 1)) ); 
-                                         CREATE TABLE IF NOT EXISTS ReservasHistorico(Id INTEGER PRIMARY KEY AUTOINCREMENT, IdReserva INTEGER, Sala VARCHAR(10), Turno VARCHAR(30), DataInicioAgendamento DATETIME, DataFinalAgendamento DATETIME, Responsavel VARCHAR(80), Finalidade VARCHAR(80), Conteudo VARCHAR(80) , Encerrado BOOLEAN NOT NULL CHECK (Encerrado IN (0, 1)),Seg BOOLEAN NOT NULL CHECK (Seg IN (0, 1)),Ter BOOLEAN NOT NULL CHECK (Ter IN (0, 1)),Qua BOOLEAN NOT NULL CHECK (Qua IN (0, 1)),Qui BOOLEAN NOT NULL CHECK (Qui IN (0, 1)),Sex BOOLEAN NOT NULL CHECK (Sex IN (0, 1)),Sab BOOLEAN NOT NULL CHECK (Sab IN (0, 1)) );
+                    cmd.CommandText = @$"CREATE TABLE IF NOT EXISTS Reservas         (Id INTEGER PRIMARY KEY AUTOINCREMENT,                    SalaId VARCHAR(10), Turno VARCHAR(30), DataInicioAgendamento DATETIME, DataFinalAgendamento DATETIME, ResponsavelId VARCHAR(80), Finalidade VARCHAR(80), Conteudo VARCHAR(80) , Encerrado BOOLEAN NOT NULL CHECK (Encerrado IN (0, 1)),Seg BOOLEAN NOT NULL CHECK (Seg IN (0, 1)),Ter BOOLEAN NOT NULL CHECK (Ter IN (0, 1)),Qua BOOLEAN NOT NULL CHECK (Qua IN (0, 1)),Qui BOOLEAN NOT NULL CHECK (Qui IN (0, 1)),Sex BOOLEAN NOT NULL CHECK (Sex IN (0, 1)),Sab BOOLEAN NOT NULL CHECK (Sab IN (0, 1)) ); 
+                                         CREATE TABLE IF NOT EXISTS ReservasHistorico(Id INTEGER PRIMARY KEY AUTOINCREMENT, IdReserva INTEGER, SalaId VARCHAR(10), Turno VARCHAR(30), DataInicioAgendamento DATETIME, DataFinalAgendamento DATETIME, ResponsavelId VARCHAR(80), Finalidade VARCHAR(80), Conteudo VARCHAR(80) , Encerrado BOOLEAN NOT NULL CHECK (Encerrado IN (0, 1)),Seg BOOLEAN NOT NULL CHECK (Seg IN (0, 1)),Ter BOOLEAN NOT NULL CHECK (Ter IN (0, 1)),Qua BOOLEAN NOT NULL CHECK (Qua IN (0, 1)),Qui BOOLEAN NOT NULL CHECK (Qui IN (0, 1)),Sex BOOLEAN NOT NULL CHECK (Sex IN (0, 1)),Sab BOOLEAN NOT NULL CHECK (Sab IN (0, 1)) );
+                                         CREATE TABLE IF NOT EXISTS Salas (Id INTEGER PRIMARY KEY AUTOINCREMENT, Nome VARCHAR(30));
+                                         CREATE TABLE IF NOT EXISTS Responsaveis( Id INTEGER PRIMARY KEY AUTOINCREMENT, Nome VARCHAR(30));
                                          ";
+                    
                     cmd.ExecuteNonQuery();
 
                 }
@@ -174,7 +177,7 @@ namespace AgendaSalaSenac.DAL
                     {
                         var reserva = new Reserva();
                         reserva.Id = Convert.ToInt32(dataRow["id"]);
-                        reserva.Sala = dataRow["sala"].ToString();
+                        //reserva.Sala = dataRow["sala"].ToString();
                         reserva.Turno = dataRow["turno"].ToString();
                         reserva.DataInicioAgendamento = Convert.ToDateTime(dataRow["dataInicioAgendamento"]);
                         reserva.DataFinalAgendamento = Convert.ToDateTime(dataRow["dataFinalAgendamento"]);
@@ -205,7 +208,7 @@ namespace AgendaSalaSenac.DAL
 
                     cmd.CommandText = "INSERT INTO Reservas( sala, turno, dataInicioAgendamento, dataFinalAgendamento, responsavel, finalidade, conteudo , Encerrado, Seg, Ter, Qua, Qui, Sex, Sab) values ( @sala, @turno, @dataInicioAgendamento, @dataFinalAgendamento, @responsavel, @finalidade, @conteudo, 0, @ckSeg, @ckTer, @ckQua, @ckQui, @ckSex, @ckSab)";
 
-                    cmd.Parameters.AddWithValue("@sala", reserva.Sala);
+                    //cmd.Parameters.AddWithValue("@sala", reserva.Sala);
                     cmd.Parameters.AddWithValue("@turno", reserva.Turno);
                     cmd.Parameters.AddWithValue("@dataInicioAgendamento", reserva.DataInicioAgendamento);
                     cmd.Parameters.AddWithValue("@dataFinalAgendamento", reserva.DataFinalAgendamento);
@@ -239,7 +242,7 @@ namespace AgendaSalaSenac.DAL
                 {
                     cmd.CommandText = "UPDATE Reservas SET Sala=@sala, Turno=@turno, DataInicioAgendamento=@dataInicioAgendamento, DataFinalAgendamento=@dataFinalAgendamento, Responsavel=@responsavel, Finalidade=@finalidade, Conteudo=@conteudo, Seg=@ckSeg, Ter=@ckTer, Qua=@ckQua, Qui=@ckQui, Sex=@ckSex, Sab=@ckSab WHERE Id=@id";
                     cmd.Parameters.AddWithValue("@id", reserva.Id);
-                    cmd.Parameters.AddWithValue("@sala", reserva.Sala);
+                    //cmd.Parameters.AddWithValue("@sala", reserva.Sala);
                     cmd.Parameters.AddWithValue("@turno", reserva.Turno);
                     cmd.Parameters.AddWithValue("@dataInicioAgendamento", reserva.DataInicioAgendamento);
                     cmd.Parameters.AddWithValue("@dataFinalAgendamento", reserva.DataFinalAgendamento);
@@ -280,7 +283,7 @@ namespace AgendaSalaSenac.DAL
                     cmd.CommandText = "INSERT INTO ReservasHistorico(IdReserva, sala, turno, dataInicioAgendamento, dataFinalAgendamento, responsavel, finalidade, conteudo , Encerrado, Seg, Ter, Qua, Qui, Sex, Sab) values (@id, @sala, @turno, @dataInicioAgendamento, @dataFinalAgendamento, @responsavel, @finalidade, @conteudo, 0, @ckSeg, @ckTer, @ckQua, @ckQui, @ckSex, @ckSab)";
 
                     cmd.Parameters.AddWithValue("@id", id);
-                    cmd.Parameters.AddWithValue("@sala", reserva.Sala);
+                    //cmd.Parameters.AddWithValue("@sala", reserva.Sala);
                     cmd.Parameters.AddWithValue("@turno", reserva.Turno);
                     cmd.Parameters.AddWithValue("@dataInicioAgendamento", reserva.DataInicioAgendamento);
                     cmd.Parameters.AddWithValue("@dataFinalAgendamento", reserva.DataFinalAgendamento);
@@ -316,7 +319,7 @@ namespace AgendaSalaSenac.DAL
                     cmd.CommandText = "SELECT * FROM Reservas WHERE Sala =  @sala AND Turno = @turno AND date(dataInicioAgendamento) >= @dataInicioAgendamento AND date(dataFinalAgendamento) <= @dataFinalAgendamento AND Seg = @seg AND Ter = @ter AND Qua = @qua AND Qui = @qui AND Sex = @sex AND Sab = @sab";
 
                     da = new SQLiteDataAdapter(cmd.CommandText, DbConnection());
-                    da.SelectCommand.Parameters.AddWithValue("@sala", reserva.Sala);
+                    //da.SelectCommand.Parameters.AddWithValue("@sala", reserva.Sala);
                     da.SelectCommand.Parameters.AddWithValue("@turno", reserva.Turno);
                     da.SelectCommand.Parameters.AddWithValue("@dataInicioAgendamento", reserva.DataInicioAgendamento.ToString("yyyy-MM-dd"));
                     da.SelectCommand.Parameters.AddWithValue("@dataFinalAgendamento", reserva.DataFinalAgendamento.ToString("yyyy-MM-dd"));
@@ -338,6 +341,15 @@ namespace AgendaSalaSenac.DAL
             {
                 throw ex;
             }
+
+            //public DataTable consultaSalas()
+            //{
+                //SQLiteConnection conn = new SQLiteConnection("Data Source=banco.db;Version=3;");
+                //SQLiteCommand cmd = new SQLiteCommand("SELECT nome, id FROM salas", conn);
+                //SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+                //DataTable dt = new DataTable();
+               // da.Fill(dt);
+            //}
 
         }
     }
