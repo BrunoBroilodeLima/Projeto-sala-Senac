@@ -55,14 +55,12 @@
             label7 = new Label();
             txtFinalidade = new TextBox();
             label6 = new Label();
-            txtResponsavel = new TextBox();
             label5 = new Label();
             dateTimePickerFim = new DateTimePicker();
             label4 = new Label();
             dateTimePickerInicio = new DateTimePicker();
             label3 = new Label();
             label2 = new Label();
-            txtSala = new TextBox();
             label1 = new Label();
             panel4 = new Panel();
             tabAgendaAtiva = new TabControl();
@@ -72,6 +70,8 @@
             dgvHistorico = new DataGridView();
             label11 = new Label();
             lblDados = new Label();
+            cmbSala = new ComboBox();
+            cmbResponsavel = new ComboBox();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -125,6 +125,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(cmbResponsavel);
+            groupBox1.Controls.Add(cmbSala);
             groupBox1.Controls.Add(cmbTurno);
             groupBox1.Controls.Add(btnCancelar);
             groupBox1.Controls.Add(label12);
@@ -146,14 +148,12 @@
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(txtFinalidade);
             groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(txtResponsavel);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(dateTimePickerFim);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(dateTimePickerInicio);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(txtSala);
             groupBox1.Controls.Add(label1);
             groupBox1.Location = new Point(24, 29);
             groupBox1.Name = "groupBox1";
@@ -374,15 +374,6 @@
             label6.TabIndex = 4;
             label6.Text = "FINALIDADE";
             // 
-            // txtResponsavel
-            // 
-            txtResponsavel.CharacterCasing = CharacterCasing.Upper;
-            txtResponsavel.Enabled = false;
-            txtResponsavel.Location = new Point(8, 392);
-            txtResponsavel.Name = "txtResponsavel";
-            txtResponsavel.Size = new Size(325, 23);
-            txtResponsavel.TabIndex = 6;
-            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -436,15 +427,6 @@
             label2.Size = new Size(46, 15);
             label2.TabIndex = 2;
             label2.Text = "TURNO";
-            // 
-            // txtSala
-            // 
-            txtSala.CharacterCasing = CharacterCasing.Upper;
-            txtSala.Enabled = false;
-            txtSala.Location = new Point(8, 138);
-            txtSala.Name = "txtSala";
-            txtSala.Size = new Size(325, 23);
-            txtSala.TabIndex = 2;
             // 
             // label1
             // 
@@ -537,6 +519,24 @@
             lblDados.TabIndex = 1;
             lblDados.Text = "Banco de Dados";
             // 
+            // cmbSala
+            // 
+            cmbSala.FormattingEnabled = true;
+            cmbSala.Items.AddRange(new object[] { "101\t", "102", "103" });
+            cmbSala.Location = new Point(6, 143);
+            cmbSala.Name = "cmbSala";
+            cmbSala.Size = new Size(327, 23);
+            cmbSala.TabIndex = 32;
+            // 
+            // cmbResponsavel
+            // 
+            cmbResponsavel.FormattingEnabled = true;
+            cmbResponsavel.Items.AddRange(new object[] { "NAIRO", "RAFAEL", "CLAUDEMIR" });
+            cmbResponsavel.Location = new Point(8, 396);
+            cmbResponsavel.Name = "cmbResponsavel";
+            cmbResponsavel.Size = new Size(327, 23);
+            cmbResponsavel.TabIndex = 33;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -583,14 +583,12 @@
         private Label label7;
         private TextBox txtFinalidade;
         private Label label6;
-        private TextBox txtResponsavel;
         private Label label5;
         private DateTimePicker dateTimePickerFim;
         private Label label4;
         private DateTimePicker dateTimePickerInicio;
         private Label label3;
         private Label label2;
-        private TextBox txtSala;
         private Label label1;
         private DataGridView dgvDados;
         private Label lblDados;
@@ -613,5 +611,7 @@
         private CheckBox ckTer;
         private Button btnCancelar;
         private ComboBox cmbTurno;
+        private ComboBox cmbResponsavel;
+        private ComboBox cmbSala;
     }
 }

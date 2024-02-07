@@ -45,11 +45,11 @@ namespace AgendaSalaSenac
         private void LimparDados()
         {
             txtId.Clear();
-            txtSala.Clear();
+            //cmbSala.Clear();
             //cmbTurno.Clear();
             //dateTimePickerInicio = new DateTimePicker();
             //dateTimePickerFim = new DateTimePicker();
-            txtResponsavel.Clear();
+            //cmbResponsavel.Clear();
             txtFinalidade.Clear();
             txtConteudo.Clear();
             ckSeg.Checked = false;
@@ -59,7 +59,7 @@ namespace AgendaSalaSenac
             ckSex.Checked = false;
             ckSab.Checked = false;
 
-            txtSala.Focus();
+            cmbSala.Focus();
         }
 
         private void btnEncerrar_Click(object sender, EventArgs e)
@@ -95,7 +95,7 @@ namespace AgendaSalaSenac
                 }
                 else
                 {
-                    string usuario = txtSala.Text;
+                    string usuario = cmbSala.Text;
                     dt = DALAgenda.GetReservas(usuario);
                 }
                 dgvDados.DataSource = dt;
@@ -123,11 +123,11 @@ namespace AgendaSalaSenac
                 {
                     return;
                 }
-                txtSala.Text = linhaSelecionada.Cells[1].Value.ToString();
+                cmbSala.Text = linhaSelecionada.Cells[1].Value.ToString();
                 cmbTurno.Text = linhaSelecionada.Cells[2].Value.ToString();
                 dateTimePickerInicio.Value = Convert.ToDateTime(linhaSelecionada.Cells[3].Value.ToString());
                 dateTimePickerFim.Value = Convert.ToDateTime(linhaSelecionada.Cells[4].Value.ToString());
-                txtResponsavel.Text = linhaSelecionada.Cells[5].Value.ToString();
+                cmbResponsavel.Text = linhaSelecionada.Cells[5].Value.ToString();
                 txtFinalidade.Text = linhaSelecionada.Cells[6].Value.ToString();
                 txtConteudo.Text = linhaSelecionada.Cells[7].Value.ToString();
                 ckSeg.Checked = (bool)linhaSelecionada.Cells[9].Value;
@@ -178,11 +178,11 @@ namespace AgendaSalaSenac
             try
             {
                 Reserva reserva = new Reserva();
-                reserva.Sala = txtSala.Text;
+                reserva.Sala = cmbSala.Text;
                 reserva.Turno = cmbTurno.Text;
                 reserva.DataInicioAgendamento = dateTimePickerInicio.Value;
                 reserva.DataFinalAgendamento = dateTimePickerFim.Value;
-                reserva.Responsavel = txtResponsavel.Text;
+                reserva.Responsavel = cmbResponsavel.Text;
                 reserva.Finalidade = txtFinalidade.Text;
                 reserva.Conteudo = txtConteudo.Text;
                 reserva.ckSeg = ckSeg.Checked;
@@ -210,11 +210,11 @@ namespace AgendaSalaSenac
             {
                 int id = Convert.ToInt32(txtId.Text);
                 var reserva = DALAgenda.GetReserva(id);
-                reserva.Sala = txtSala.Text;
+                reserva.Sala = cmbSala.Text;
                 reserva.Turno = cmbTurno.Text;
                 reserva.DataInicioAgendamento = dateTimePickerInicio.Value;
                 reserva.DataFinalAgendamento = dateTimePickerFim.Value;
-                reserva.Responsavel = txtResponsavel.Text;
+                reserva.Responsavel = cmbResponsavel.Text;
                 reserva.Finalidade = txtFinalidade.Text;
                 reserva.Conteudo = txtConteudo.Text;
                 reserva.ckSeg = ckSeg.Checked;
@@ -249,7 +249,7 @@ namespace AgendaSalaSenac
 
         private void habilitarCampos()
         {
-            txtSala.Enabled = true;
+            cmbSala.Enabled = true;
             cmbTurno.Enabled = true;
             dateTimePickerInicio.Enabled = true;
             dateTimePickerFim.Enabled = true;
@@ -259,17 +259,17 @@ namespace AgendaSalaSenac
             ckQui.Enabled = true;
             ckSex.Enabled = true;
             ckSab.Enabled = true;
-            txtResponsavel.Enabled = true;
+            cmbResponsavel.Enabled = true;
             txtFinalidade.Enabled = true;
             txtConteudo.Enabled = true;
             btnSalvar.Enabled = true;
             btnCancelar.Enabled = true;
-            txtSala.Focus();
+            cmbSala.Focus();
 
         }
         private void deshabilitarCampos()
         {
-            txtSala.Enabled = !true;
+            cmbSala.Enabled = !true;
             cmbTurno.Enabled = !true;
             dateTimePickerInicio.Enabled = false;
             dateTimePickerFim.Enabled = !true;
@@ -279,7 +279,7 @@ namespace AgendaSalaSenac
             ckQui.Enabled = !true;
             ckSex.Enabled = !true;
             ckSab.Enabled = !true;
-            txtResponsavel.Enabled = !true;
+            cmbResponsavel.Enabled = !true;
             txtFinalidade.Enabled = !true;
             txtConteudo.Enabled = !true;
             btnSalvar.Enabled = !true;
@@ -292,11 +292,11 @@ namespace AgendaSalaSenac
         bool ValidarDisponibilidade()
         {
             Reserva reserva = new Reserva();
-            reserva.Sala = txtSala.Text;
+            reserva.Sala = cmbSala.Text;
             reserva.Turno = cmbTurno.Text;
             reserva.DataInicioAgendamento = dateTimePickerInicio.Value;
             reserva.DataFinalAgendamento = dateTimePickerFim.Value;
-            reserva.Responsavel = txtResponsavel.Text;
+            reserva.Responsavel = cmbResponsavel.Text;
             reserva.Finalidade = txtFinalidade.Text;
             reserva.Conteudo = txtConteudo.Text;
             reserva.ckSeg = ckSeg.Checked;
